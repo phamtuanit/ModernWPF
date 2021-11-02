@@ -13,46 +13,52 @@
         Title="Login"
         Height="320" Width="350" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize" WindowStyle="None">
-    <Grid Margin="24">
-        <ui:SimpleStackPanel Spacing="12">
-            <TextBox
+    <Border Padding="24"
+            Background="{DynamicResource SystemControlBackgroundAltHighBrush}"
+            BorderBrush="{DynamicResource SystemControlBackgroundListLowBrush}"
+            BorderThickness="1" 
+            SnapsToDevicePixels="True">
+        <Grid>
+            <ui:SimpleStackPanel Spacing="12">
+                <TextBox
                 ui:ControlHelper.Header="Username:"
                 Text="{Binding Username}"
                 AcceptsReturn="True" />
-            <PasswordBox x:Name="PasswordBox"
+                <PasswordBox x:Name="PasswordBox"
                 ui:ControlHelper.Header="Password:" MaxLength="10">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="PasswordChanged">
-                        <i:InvokeCommandAction Command="{Binding PasswordChangeCmd}"
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="PasswordChanged">
+                            <i:InvokeCommandAction Command="{Binding PasswordChangeCmd}"
                                                CommandParameter="{Binding Path=., ElementName=PasswordBox}" />
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </PasswordBox>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </PasswordBox>
 
-            <ui:HyperlinkButton
+                <ui:HyperlinkButton
                     Content="Forgot password?" HorizontalAlignment="Right" VerticalAlignment="Stretch"></ui:HyperlinkButton>
-        </ui:SimpleStackPanel>
+            </ui:SimpleStackPanel>
 
-        <!--Action-->
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,12">
-            <Button Content="Login" Style="{DynamicResource AccentButtonStyle}"
+            <!--Action-->
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,12">
+                <Button Content="Login" Style="{DynamicResource AccentButtonStyle}"
                     Width="130">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding LoginCmd}"
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding LoginCmd}"
                                                CommandParameter="{Binding Path=., ElementName=LoginWindow}" />
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
-            <Button Content="Cancel"
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+                <Button Content="Cancel"
                     Width="130" Margin="12 0 0 0">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding CancelCmd}"
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding CancelCmd}"
                                                CommandParameter="{Binding Path=., ElementName=LoginWindow}" />
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </Button>
-        </StackPanel>
-    </Grid>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
 </Window>
