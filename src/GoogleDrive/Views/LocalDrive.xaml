@@ -27,7 +27,7 @@
                         <TextBlock Text="My ThinkPad Laptop" FontWeight="Bold"
                                    FontFamily="/GoogleDrive;component/Assets/Fonts/#Roboto" FontSize="16"></TextBlock>
                         <TextBlock FontFamily="/GoogleDrive;component/Assets/Fonts/#Roboto" TextWrapping="Wrap"
-                                   Margin="0 2 0 0">
+                                   Margin="0 4 0 0">
                             <Run FontFamily="/GoogleDrive;component/Assets/Fonts/#Roboto Light">Choose a folder on your computer to sync with Google Drive or back up to Google Photos.</Run>
                             <Hyperlink FontFamily="/GoogleDrive;component/Assets/Fonts/#Roboto Light">Learn more</Hyperlink>
                         </TextBlock>

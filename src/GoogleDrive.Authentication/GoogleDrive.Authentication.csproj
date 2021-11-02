@@ -60,7 +60,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthenticationModel.cs" />
+    <Compile Include="AuthenticationModule.cs" />
     <Compile Include="Business\Authenticator.cs" />
     <Compile Include="Business\IAuthenticator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

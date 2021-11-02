@@ -4,7 +4,7 @@ using Prism.Modularity;
 
 namespace GoogleDrive.Authentication
 {
-    public class AuthenticationModel : IModule
+    public class AuthenticationModule : IModule
     {
         public void OnInitialized(IContainerProvider containerProvider)
         {

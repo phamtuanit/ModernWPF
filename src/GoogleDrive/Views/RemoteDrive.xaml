@@ -3,10 +3,104 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ui="http://schemas.modernwpf.com/2019"
+             xmlns:prism="http://prismlibrary.com/"
              xmlns:local="clr-namespace:GoogleDrive.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="8">
-        <TextBlock Text="Remote Drive"></TextBlock>
+    <UserControl.Resources>
+        <DataTemplate x:Key="BasicListViewTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ui:SymbolIcon Symbol="Page" Height="22" Width="22"/>
+                <TextBlock Text="{Binding ., Mode=OneTime}" Margin="8,5,0,5" Grid.Column="1"/>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="FolderListViewTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ui:SymbolIcon Symbol="SyncFolder" Height="22" Width="22"/>
+                <TextBlock Text="{Binding ., Mode=OneTime}" Margin="8,5,0,5" Grid.Column="1"/>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid Margin="14 0 14 8">
+        <Border Background="{DynamicResource SystemControlBackgroundAltHighBrush}"
+                BorderBrush="{DynamicResource SystemControlBackgroundListLowBrush}"
+                BorderThickness="1" 
+                SnapsToDevicePixels="True" CornerRadius="4">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Background="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <ui:SimpleStackPanel Margin="24">
+                            <TextBlock Text="Google Drive" FontWeight="Bold"
+                                   FontFamily="/GoogleDrive;component/Assets/Fonts/#Roboto" FontSize="16"></TextBlock>
+                            <TextBlock FontFamily="/GoogleDrive;component/Assets/Fonts/#Roboto" TextWrapping="Wrap"
+                                   Margin="0 2 0 0">
+                            <Run FontFamily="/GoogleDrive;component/Assets/Fonts/#Roboto Light">All folders are syncing...</Run>
+                            </TextBlock>
+                            <Button Content="Sync" Margin="0 12 0 8" Width="150"
+                                    IsEnabled="False"
+                                Style="{DynamicResource AccentButtonStyle}"></Button>
+                        </ui:SimpleStackPanel>
+
+                        <ui:PersonPicture Grid.Column="1" Margin="24"
+                                          VerticalAlignment="Top"
+                                          DisplayName="Tuan Pham"
+                                          Initials="TP" Height="60" HorizontalAlignment="Center"/>
+
+                        <ui:ProgressBar IsIndeterminate="True" VerticalAlignment="Bottom"
+                                        Grid.ColumnSpan="2"/>
+                    </Grid>
+                </Border>
+
+                <ui:SimpleStackPanel Grid.Row="1">
+                    <Border Height="42" BorderThickness="0 1 0 1" Style="{DynamicResource CommonBorderStyle}"
+                        Background="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}">
+                        <StackPanel Orientation="Horizontal">
+                            <ui:AppBarButton ToolTip="Add" Icon="Add" IsCompact="True" Height="42" Width="42"/>
+                            <ui:AppBarButton ToolTip="Download" Icon="Download" IsCompact="True" Width="42" Height="42"/>
+                            <ui:AppBarButton ToolTip="Upload" Icon="Upload" IsCompact="True" Width="42" Height="42"/>
+                        </StackPanel>
+                    </Border>
+
+                    <ui:ListView Height="200"
+                        ItemTemplate="{StaticResource FolderListViewTemplate}"
+                        BorderThickness="1"
+                        ItemsSource="{Binding Folders}">
+                    </ui:ListView>
+                    
+                    <Separator Background="{DynamicResource SystemControlBackgroundListLowBrush}"
+                               Margin="8"/>
+
+                    <TextBlock TextWrapping="Wrap"
+                               Margin="8 0 0 8"
+                               Text="Recent Files"
+                               FontFamily="/GoogleDrive;component/Assets/Fonts/#Roboto" FontSize="14" FontWeight="Bold"></TextBlock>
+                </ui:SimpleStackPanel>
+
+                <ScrollViewer Grid.Row="2">
+                    <ui:ListView ItemTemplate="{StaticResource BasicListViewTemplate}"
+                                     BorderThickness="1" ItemsSource="{Binding RecentFiles}">
+                    </ui:ListView>
+                </ScrollViewer>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

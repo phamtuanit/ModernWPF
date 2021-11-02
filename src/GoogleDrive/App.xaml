@@ -23,6 +23,12 @@
                                Source="{Binding Location, Mode=OneTime}"
                                Width="190" Height="130"/>
                     </DataTemplate>
+
+                    <Style x:Key="CommonBorderStyle" TargetType="Border">
+                        <Setter Property="BorderBrush" Value="{StaticResource SystemControlBackgroundListLowBrush}"/>
+                        <Setter Property="Background" Value="{StaticResource SystemControlBackgroundChromeMediumLowBrush}"/>
+                        <Setter Property="SnapsToDevicePixels" Value="True"/>
+                    </Style>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
