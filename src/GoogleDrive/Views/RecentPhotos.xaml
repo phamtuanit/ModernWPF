@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="GoogleDrive.Views.RecentPhotos"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ui="http://schemas.modernwpf.com/2019"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:local="clr-namespace:GoogleDrive.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel>
+        <TextBlock TextWrapping="Wrap"
+                   Text="Recent Photos"
+                   FontFamily="/GoogleDrive;component/Assets/Fonts/#Roboto" FontSize="14" FontWeight="Bold"></TextBlock>
+        <ScrollViewer MaxHeight="400" Margin="0 8 0 0">
+            <ui:GridView ItemTemplate="{StaticResource ImageTemplate}" SelectionMode="Single"
+                         ItemsSource="{Binding Images}">
+            </ui:GridView>
+        </ScrollViewer>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,30 @@
+﻿<Application x:Class="GoogleDrive.App"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ui="http://schemas.modernwpf.com/2019"
+             xmlns:local="clr-namespace:GoogleDrive">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ui:ThemeResources />
+                <ui:XamlControlsResources />
+
+                <!--Local resource-->
+                <ResourceDictionary>
+                    <Style x:Key="{x:Type Window}" TargetType="{x:Type Window}">
+                        <Setter Property="FontFamily" Value="/Assets/Fonts/Roboto-Regular.ttf#Roboto" />
+                    </Style>
+
+                    <Style x:Key="{x:Type Button}" TargetType="{x:Type Button}" BasedOn="{StaticResource AccentButtonStyle}"></Style>
+
+                    <DataTemplate x:Key="ImageTemplate">
+                        <Image Stretch="UniformToFill"
+                               Source="{Binding Location, Mode=OneTime}"
+                               Width="190" Height="130"/>
+                    </DataTemplate>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
